@@ -6,17 +6,17 @@ public:
         }
         int n1 = nums1.size();
         int n2 = nums2.size();
-        int total = nums1.size() + nums2.size();
+        int total = n1 + n2;
         int low = 0;
         int high = n1;
         float median;
         while(low<=high){
             int mid = low + (high-low)/2;
             int s = (total+1)/2-mid;
-            float l1 ;
-            float r1 ;
-            float l2 ;
-            float r2 ;
+            int l1 ;
+            int r1 ;
+            int l2 ;
+            int r2 ;
             if(mid==0){
                 l1 = INT_MIN;
             }
@@ -49,16 +49,17 @@ public:
             }
             else{
                 if(total%2==0){
-                    median = (max(l1,l2)+min(r1,r2))/2;
-                    break;
+                    median = (max(l1,l2)+min(r1,r2))/2.0;
+                    return median;
                 }
                 else{
                     median = max(l1,l2);
-                    break;
+                    return median;
                 }
             }
         }
         return median;
+        
     }
 };
 
