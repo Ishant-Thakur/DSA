@@ -3,15 +3,37 @@ public:
     int maximumProduct(vector<int>& nums) {
         int n = nums.size();
         int result = 0;
-        if(n==3){
-            result = nums[0]*nums[1]*nums[2];
+        int l1 = INT_MIN;
+        int l2 = INT_MIN;
+        int l3 = INT_MIN;
+        int s1= INT_MAX;
+        int s2= INT_MAX;
+        for(int x : nums){
+            if(x>l1){
+                l3 = l2;
+                l2=l1;
+                l1 = x;
+            }
+            else if(x>l2){
+                l3=l2;
+                l2 = x;
+            }
+            else{
+                if(x>l3)
+                    l3 = x;
+            }
+            if(x<s1){
+                s2=s1;
+                s1=x;
+            }
+            else{
+                if(x<s2)
+                    s2=x;
+            }
         }
-        else{
-            sort(nums.begin(),nums.end());
-            int ans1 = nums[0]*nums[1]*nums[n-1];
-            int ans2 = nums[n-1]*nums[n-2]*nums[n-3];
-            result = max(ans1,ans2);
-        }
+        int ans1 = l1*l2*l3;
+        int ans2 = s1*s2*l1;
+        result = max(ans1,ans2);
         return result;
     }
 };
