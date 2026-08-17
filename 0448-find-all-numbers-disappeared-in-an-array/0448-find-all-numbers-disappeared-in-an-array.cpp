@@ -2,9 +2,8 @@ class Solution {
 public:
     vector<int> findDisappearedNumbers(vector<int>& nums) {
         vector<int> result ;
-        int n = nums.size();
         unordered_set<int> s(nums.begin(), nums.end());
-        for(int i = 1 ; i<=n ; i++){
+        for(int i = 1 ; i<=nums.size() ; i++){
             if(s.find(i)==s.end()){
                 result.push_back(i);
             }
